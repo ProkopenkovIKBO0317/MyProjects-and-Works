@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void perevod (double znach, char sisizm)
+{
+    switch (sisizm)
+    {
+        case 'K':
+        case 'k':
+            if (znach < 0)
+            {
+                printf("Неккоректный формат ввода.");
+                break;
+            }
+            else 
+            {
+                double c = znach - 273.15;
+                double f = (znach / 5 * 9) - 459.67;
+                printf ("%.2f K: \n", znach);
+                printf ("%.2f C: \n",  c);
+                printf ("%.2f F: \n", f);
+            break;
+            }
+            
+            case 'C':
+        case 'c':
+            if (znach < -273.15)
+            {
+                printf("Неккоректный формат ввода.");
+                break;
+            }
+            else
+            {
+                double k = znach + 273.15;
+                double f = (znach * 9 / 5) + 32;
+                printf ("%.2f C:\n", znach);
+                printf ("%.2f K:\n",  k);
+                printf ("%.2f F:\n", f);
+                break;
+            } 
+
+        case 'F':
+        case 'f':
+            if (znach < -459.67) {
+                printf("Неккоректный формат ввода.");
+                break;
+            }
+            else
+            {
+                double c = (znach - 32) * 5 / 9;
+                double k = (znach + 459.67) * 5 / 9;
+                printf ("%.2f F: \n", znach);
+                printf ("%.2f C: \n",  c);
+                printf ("%.2f K: \n", k);
+                break;
+            }
+
+        default:
+
+                printf("Ошибкв");
+
+            break;
+    }
+
+}
+
+   int main(int argc, char *argv[])
+    {
+	if (argc == 2)
+    {  
+		double znach = atof(argv[1]);
+		perevod(znach,'C');
+    printf("\n");
+    perevod(znach,'F');
+    printf("\n");
+    perevod(znach,'K');
+    
+	  }
+    else if(argc == 3) 
+    {
+    	double perevod = atof(argv[1]);
+    	perevod(znach,*argv[2]);
+    }
+    return 0;
+}
